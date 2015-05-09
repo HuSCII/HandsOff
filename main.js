@@ -16,7 +16,30 @@ Using a ssh client:
 Article: https://software.intel.com/en-us/html5/articles/intel-xdk-iot-edition-nodejs-templates
 */
 
+// var twitter = require('twitter');
+
+// var client = new twitter({
+//   consumer_key: 'Ge26AgOcRXpL8gcYGlN2lq8vN',
+//   consumer_secret: 'hMUIQJ0TRxwhJWcVJNHP87NcWdqO7Saldcbs6ADZn2fsrx2XM3',
+//   access_token_key: '3114306738-nYPTKH2psVJnADfG0VoDs8UhWxwIrAEFzWSC863',
+//   access_token_secret: 'rBELpy9sE0PoIeFNolyfiTpoxbDQHM9n6iDdq0bHUQ6bV'
+// });
+
 readAccel();
+
+// client.post('statuses/update', {status: 'I am a tweet #tweetmonkey'}, function(error, tweet, response){
+//   console.log(tweet);
+//   console.log(error);
+//   console.log(response);
+//   if (!error) {
+//     console.log(tweet);
+//   }
+// });
+
+var currx = 0;
+var curry = 0;
+var currz = 0;
+
 
 function readAccel(){
 
@@ -26,23 +49,35 @@ var analogPin0 = new mraa.Aio(0); //setup access analog input Analog pin #0 (A0)
 var analogPin1 = new mraa.Aio(1); //setup access analog input Analog pin #0 (A0)
 var analogPin2 = new mraa.Aio(2); //setup access analog input Analog pin #0 (A0)
 
-var counter = 0;
-    
+//var counter = 0;
+   
+var thresh = 10;
+//var currx = 0;
+//var curry = 0;
+//var currz = 0;
 // Read pin 0
 var analogValue0 = analogPin0.read(); //read the value of the analog pin
-console.log('x: ' + analogValue0); //write the value of the analog pin to the console
 
 // Read pin 1
 var analogValue1 = analogPin1.read(); //read the value of the analog pin
-console.log('y: ' + analogValue1); //write the value of the analog pin to the console
 
 // Read pin 2
 var analogValue2 = analogPin2.read(); //read the value of the analog pin
-console.log('z: ' + analogValue2); //write the value of the analog pin to the console
+// if(analogValue0 - currx > thresh && analogValue1 - curry > thresh && analogValue2 - currz > thresh) {
+// 	console.log('y: ' + analogValue1); //write the value of the analog pin to the console
+// 	console.log('x: ' + analogValue0); //write the value of the analog pin to the console
+// 	console.log('z: ' + analogValue2); //write the value of the analog pin to the console
+// 	currx = analogValue0;
+// 	curry = analogValue1;
+// 	currz = analogValue2;
+// }
 
-console.log('Count: '+counter++);
+	console.log('y: ' + analogValue1); //write the value of the analog pin to the console
+	console.log('x: ' + analogValue0); //write the value of the analog pin to the console
+	console.log('z: ' + analogValue2); //write the value of the analog pin to the console
+
+console.log('Your shits been moved!\n');
     
-setTimeout(readAccel, 3000);
+setTimeout(readAccel, 1000);
     
 }
-
